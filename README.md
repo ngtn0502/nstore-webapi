@@ -18,11 +18,31 @@ If it not trusted yet, we can trust seft-signed certificate by:
 
 # Architecture
 
+[Project structure](https://fpt-software.udemy.com/course/learn-to-build-an-e-commerce-app-with-net-core-and-angular/learn/lecture/18136720?start=165#questions)
+
 It is a 3-layer architecture web-api project
 
-<img src="./img/1.PNG" width="900">
+<img src="./img/1.png" width="900">
+
+```
+> dotnet new classlib -o Core
+
+> dotnet new classlib -o Infrastructure
+
+> dotnet sln add Core
+
+> dotnet sln add Infrastructure
+
+> nstore-webapi/API: dotnet add references ../Infrastructure
+
+> nstore-webapi/Infrastructure: dotnet add references ../Core
+
+> dotnet restore
+```
 
 # Reviewing some basic of dotNet Web Api
+
+[Lesson10](https://fpt-software.udemy.com/course/learn-to-build-an-e-commerce-app-with-net-core-and-angular/learn/lecture/18136686#notes)
 
 ## Solution
 
@@ -54,20 +74,9 @@ Here are some more examples of attributes that are available:
 
 ## Startup.cs 
 
-<img src="./img/2.PNG" width="900">
+<img src="./img/2.png" width="900">
 
-╔══════════════════════════════════════════╦═══════════════════════════════════════╗
-║             app.UseRouting()             ║          app.UseEndPoints()           ║
-╠══════════════════════════════════════════╬═══════════════════════════════════════╣
-║               Find Endpoint              ║           Execute Endpoint            ║
-║                                          ║                                       ║
-║  Adds route matching to the middleware   ║  Adds endpoint execution to the       ║
-║  pipeline. This middleware looks at the  ║  middleware pipeline.                 ║
-║  set of endpoints defined in the app,    ║  It runs the delegate associated      ║
-║  and selects the best match based        ║  with the selected endpoint.          ║
-║  on the request.                         ║                                       ║
-║                                          ║                                       ║
-╚══════════════════════════════════════════╩═══════════════════════════════════════╝
+<img src="./img/3.png" width="900">
 
 ## Routing matching machenism of ApiController
 
@@ -83,6 +92,65 @@ It combine:
 
 Entity framework is an convention-based Oject-Relational-Mapper.
 
-## DbContext
+## dotNet Entity framework command line tools.
 
-DbContext is a represent for our Database, it is an abstract layer of our database, we not directly query into the database, we use the help of Entity Framework 
+```
+> dotnet tool list -g  //list all tool available
+> dotnet tool install --global dotnet-ef --version 6.0.4 //install dotnet-ef tool version 6.0.4
+```
+
+## dotnet-ef command line 
+
+```
+> dotnet ef -h //list all fucntion
+> dotnet ef migrations //generate the code which we can use to scaffold our database
+> dotnet ef database //create and update our database based on the code in Migrations
+```
+
+```
+> dotnet ef migrations add <message> -o <path> //create migrations scraffold code in path directory
+
+```
+
+## DbContext(n)
+
+DbContext is a represent for our Database, it is an abstract layer of our database, we not directly query into the database, we use the help of available method in Entity Framework 
+
+We inject our DbContext to where ever we want to query to the database
+
+ex: DbContext.FindAsync Method
+
+> we can say DbContext is combination of generic repository pattern and Unit of work pattern
+
+> away our business code to the database
+
+- Generic Repository: Repository of type T, allow us to central and working on one generic repository. 
+
+- Unit of work: 
+
+
+
+## DbSet(n)
+
+Prepresent for our table in database
+
+## Migrations(v)
+
+[Migration](https://fpt-software.udemy.com/course/learn-to-build-an-e-commerce-app-with-net-core-and-angular/learn/lecture/18136702#notes)
+
+Migrate our data models, dbset, dbcontext into code for creating database purpose.
+
+## Database(v) - Update(v)
+
+[Update Databse](https://fpt-software.udemy.com/course/learn-to-build-an-e-commerce-app-with-net-core-and-angular/learn/lecture/18136706#notes)
+
+Apply our lastest migration code - create database if it does not appear, update database if already appeared.
+
+---
+
+---
+
+# API Architecture
+
+## Repository pattern
+
