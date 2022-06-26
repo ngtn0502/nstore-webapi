@@ -1,0 +1,12 @@
+D:\nstore-webapi\Core\bin\Debug\net6.0\Core.deps.json
+D:\nstore-webapi\Core\bin\Debug\net6.0\Core.dll
+D:\nstore-webapi\Core\bin\Debug\net6.0\ref\Core.dll
+D:\nstore-webapi\Core\bin\Debug\net6.0\Core.pdb
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.csproj.AssemblyReference.cache
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.AssemblyInfoInputs.cache
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.AssemblyInfo.cs
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.csproj.CoreCompileInputs.cache
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.dll
+D:\nstore-webapi\Core\obj\Debug\net6.0\ref\Core.dll
+D:\nstore-webapi\Core\obj\Debug\net6.0\Core.pdb
