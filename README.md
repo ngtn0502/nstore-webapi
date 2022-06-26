@@ -146,6 +146,16 @@ Migrate our data models, dbset, dbcontext into code for creating database purpos
 
 Apply our lastest migration code - create database if it does not appear, update database if already appeared.
 
+## Override default migrations configuration
+
+<img src="./img/4.png" width="900">
+
+<img src="./img/5.png" width="900">
+
+## Apply latest existing migrations when building project
+
+<img src="./img/6.png" width="900">
+
 ---
 
 ---
