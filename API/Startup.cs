@@ -1,3 +1,4 @@
+using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ namespace API
       {
          // Register our ProductRepository into IServiceCollection Container
          services.AddScoped<IProductRepository, ProductRepository>();
+         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+         services.AddAutoMapper(typeof(MappingProfiles));
          services.AddControllers();
          services.AddSwaggerGen(c =>
          {
@@ -50,6 +53,7 @@ namespace API
 
          // Decide what controller endpoint should be hitted
          app.UseRouting();
+         app.UseStaticFiles();
 
          // Decide what resources user can be accessed, what permission of user
          app.UseAuthorization();
