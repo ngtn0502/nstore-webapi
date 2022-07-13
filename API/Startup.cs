@@ -48,6 +48,8 @@ namespace API
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
          }
 
+         app.UseStatusCodePagesWithReExecute("/api/error/{0}");
+
          // When we access HTTP port - it will automatically redirect to HTTPs
          app.UseHttpsRedirection();
 

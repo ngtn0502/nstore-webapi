@@ -149,3 +149,4 @@ d:\nstore-webapi\API.test\obj\Debug\net6.0\API.test.pdb
 d:\nstore-webapi\API.test\obj\Debug\net6.0\API.test.genruntimeconfig.cache
 d:\nstore-webapi\API.test\bin\Debug\net6.0\AutoMapper.dll
 d:\nstore-webapi\API.test\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+d:\nstore-webapi\API.test\bin\Debug\net6.0\API.staticwebassets.runtime.json

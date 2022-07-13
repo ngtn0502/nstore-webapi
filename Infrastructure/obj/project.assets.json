@@ -1787,11 +1787,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "d:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "d:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-      "outputPath": "D:\\nstore-webapi\\Infrastructure\\obj\\",
+      "outputPath": "d:\\nstore-webapi\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1808,8 +1808,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\nstore-webapi\\Core\\Core.csproj": {
-              "projectPath": "D:\\nstore-webapi\\Core\\Core.csproj"
+            "d:\\nstore-webapi\\Core\\Core.csproj": {
+              "projectPath": "d:\\nstore-webapi\\Core\\Core.csproj"
             }
           }
         }
