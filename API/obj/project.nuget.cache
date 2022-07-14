@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NGB6KcbroBCrz/e3zfMKsiQgR9Z+AeKmxKtvYzfvGuHb8vqcqKwgWUiOwqf6ke8bNv6QFqvxCOT+F/ukhnS5HQ==",
+  "dgSpecHash": "k1SuhMCJhQqLIt3AAS7kb3I8EUHQuvlCzJsCaObuvxm6ZCyQxm79J8AXPc/mpEj0B/tqIpYeOnJIdBKlbBJdGQ==",
   "success": true,
-  "projectFilePath": "d:\\nstore-webapi\\API\\API.csproj",
+  "projectFilePath": "D:\\nstore-webapi\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\X\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\X\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

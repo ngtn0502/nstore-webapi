@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\nstore-webapi\\Core\\Core.csproj": {}
+    "D:\\nstore-webapi\\Core\\Core.csproj": {}
   },
   "projects": {
-    "d:\\nstore-webapi\\Core\\Core.csproj": {
+    "D:\\nstore-webapi\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\nstore-webapi\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\nstore-webapi\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "d:\\nstore-webapi\\Core\\Core.csproj",
+        "projectPath": "D:\\nstore-webapi\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-        "outputPath": "d:\\nstore-webapi\\Core\\obj\\",
+        "outputPath": "D:\\nstore-webapi\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",

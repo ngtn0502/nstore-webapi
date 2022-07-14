@@ -2116,11 +2116,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\nstore-webapi\\API\\API.csproj",
+      "projectUniqueName": "D:\\nstore-webapi\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "d:\\nstore-webapi\\API\\API.csproj",
+      "projectPath": "D:\\nstore-webapi\\API\\API.csproj",
       "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-      "outputPath": "d:\\nstore-webapi\\API\\obj\\",
+      "outputPath": "D:\\nstore-webapi\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2137,8 +2137,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "d:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "d:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj"
+            "D:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\nstore-webapi\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

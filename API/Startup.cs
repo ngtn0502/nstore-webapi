@@ -1,11 +1,8 @@
-using API.Errors;
+using API.Extensions;
 using API.Helpers;
 using API.Middleware;
-using Core.Interfaces;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 
 namespace API
 {
@@ -25,30 +22,14 @@ namespace API
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
-         // Register our ProductRepository into IServiceCollection Container
-         services.AddScoped<IProductRepository, ProductRepository>();
-         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
          services.AddAutoMapper(typeof(MappingProfiles));
          services.AddControllers();
-         services.AddSwaggerGen(c =>
-         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
-         });
-         //  Register StoreContext into IServicesCollection Container
+         // Extensions add/register swagger services
+         services.AddSwaggerServices();
+         // Register StoreContext into IServicesCollection Container
          services.AddDbContext<StoreContext>(x => x.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
-         // Configure modal state about api validation error response
-         services.Configure<ApiBehaviorOptions>(options =>
-         {
-            options.InvalidModelStateResponseFactory = actionContext =>
-            {
-               var errors = actionContext.ModelState
-                              .Where(x => x.Value.Errors.Count() > 0)
-                              .SelectMany(x => x.Value.Errors)
-                              .Select(x => x.ErrorMessage).ToList();
-               var response = new ApiValidationErrorResponse(errors);
-               return new BadRequestObjectResult(response);
-            };
-         });
+         // Extensions add/register Repository and Config ApiBehaviorOptions
+         services.AddApplicationServices();
       }
 
       // * Middleware
@@ -60,8 +41,8 @@ namespace API
          // Internal Server Exception Handling
          app.UseMiddleware<ExceptionMiddleware>();
 
-         app.UseSwagger();
-         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
+         // Extensions add swagger to middleware pipeline 
+         app.UseSwaggerDocumentation();
 
          // Not found end point error handling
          app.UseStatusCodePagesWithReExecute("/api/error/{0}");

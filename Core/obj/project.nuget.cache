@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oTNdosAaBB3nSQqXFhnV42HeFstyiHQ1azLzxSGVzfI0Sp7Pwt/Hv7RHcWolq9zLO4dbtvTeDw72ThdNd6r/FQ==",
+  "dgSpecHash": "2WzP9GvxRV9gNtB1EABk2U7Vp0veKnxOu/kGMN8z0sRrMSuxqSUvzLKex5uoINCsdRxoqHeW6QaFQrI2mSYHvw==",
   "success": true,
-  "projectFilePath": "d:\\nstore-webapi\\Core\\Core.csproj",
+  "projectFilePath": "D:\\nstore-webapi\\Core\\Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
