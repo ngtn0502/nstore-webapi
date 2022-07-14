@@ -1,6 +1,9 @@
+using API.Errors;
 using API.Helpers;
+using API.Middleware;
 using Core.Interfaces;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -33,6 +36,19 @@ namespace API
          });
          //  Register StoreContext into IServicesCollection Container
          services.AddDbContext<StoreContext>(x => x.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+         // Configure modal state about api validation error response
+         services.Configure<ApiBehaviorOptions>(options =>
+         {
+            options.InvalidModelStateResponseFactory = actionContext =>
+            {
+               var errors = actionContext.ModelState
+                              .Where(x => x.Value.Errors.Count() > 0)
+                              .SelectMany(x => x.Value.Errors)
+                              .Select(x => x.ErrorMessage).ToList();
+               var response = new ApiValidationErrorResponse(errors);
+               return new BadRequestObjectResult(response);
+            };
+         });
       }
 
       // * Middleware
@@ -41,13 +57,13 @@ namespace API
       public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
       {
          // Provide some information about exception when develop application
-         if (env.IsDevelopment())
-         {
-            app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
-         }
+         // Internal Server Exception Handling
+         app.UseMiddleware<ExceptionMiddleware>();
 
+         app.UseSwagger();
+         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
+
+         // Not found end point error handling
          app.UseStatusCodePagesWithReExecute("/api/error/{0}");
 
          // When we access HTTP port - it will automatically redirect to HTTPs
