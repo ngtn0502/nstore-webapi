@@ -250,7 +250,7 @@ We do not want to return to user ugly, unflatten object which is hard to comsume
 
 Thanks to
 
-AutoMapper convension based libery which is allow us to map the actual class into a Dtos object 
+AutoMapper - a convension based libery which is allow us to map the actual class into a Dtos object 
 
 ### Implementation
 
@@ -265,3 +265,62 @@ AutoMapper convension based libery which is allow us to map the actual class int
 3. Step 3: Inject Mapper dependency into Controller
 
 <img src="./img/19.png" width="900">
+
+# API Error Handling
+
+To have a consitency - easy-to-comsume error response 
+
+=> need a common-use class which is retruned to client whenever error occured
+
+## ApiResponse Class
+
+Responsible for return any kind of error in when application running
+
+<img src="./img/20.png" width="900">
+
+## BadRequest and NotFound Error
+
+<img src="./img/21.png" width="900">
+
+## Invalid EndPoint Error
+
+This kind of request - we need to add one midleware at the very beginning of the request pipeline
+
+=> This middleware will always fallback to Error controller whenever the end point is not matched
+
+<img src="./img/22.png" width="900">
+
+## Validation Error
+
+This kind of error happened when client passing invalid parameters for any controller endpoints ( usually happend in a form - post request)
+
+Model state ( ASP.NET Controller attribute) are responsible for generating this kind of error 
+
+=> need to overide the config of [ControllerAttribute]
+
+<img src="./img/23.png" width="900">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
