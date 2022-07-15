@@ -1,7 +1,9 @@
+using API.Errors;
 using API.Extensions;
 using API.Helpers;
 using API.Middleware;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API
@@ -24,6 +26,19 @@ namespace API
       {
          services.AddAutoMapper(typeof(MappingProfiles));
          services.AddControllers();
+         // Configure modal state about api validation error response
+         services.Configure<ApiBehaviorOptions>(options =>
+         {
+            options.InvalidModelStateResponseFactory = actionContext =>
+            {
+               var errors = actionContext.ModelState
+                              .Where(x => x.Value.Errors.Count() > 0)
+                              .SelectMany(x => x.Value.Errors)
+                              .Select(x => x.ErrorMessage).ToList();
+               var response = new ApiValidationErrorResponse(errors);
+               return new BadRequestObjectResult(response);
+            };
+         });
          // Extensions add/register swagger services
          services.AddSwaggerServices();
          // Register StoreContext into IServicesCollection Container

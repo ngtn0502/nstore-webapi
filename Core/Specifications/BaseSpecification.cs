@@ -22,9 +22,23 @@ namespace Core.Specifications
       {
          get { return includes; }
       }
+
+      public Expression<Func<TEntity, object>> OrderBy { get; private set; }
+
+      public Expression<Func<TEntity, object>> OrderByDescending { get; private set; }
+
       protected void AddInclude(Expression<Func<TEntity, object>> includeExpression)
       {
          includes.Add(includeExpression);
+      }
+
+      protected void AddOrderBy(Expression<Func<TEntity, object>> orderByExpression)
+      {
+         OrderBy = orderByExpression;
+      }
+      protected void AddOrderByDescending(Expression<Func<TEntity, object>> orderByDescendingExpression)
+      {
+         OrderByDescending = orderByDescendingExpression;
       }
    }
 }
