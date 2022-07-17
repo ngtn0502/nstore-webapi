@@ -24,6 +24,18 @@ namespace Core.Specifications
             currentQuery = currentQuery.OrderByDescending(specification.OrderByDescending);
          }
 
+         if (specification.IsApplyPaging)
+         {
+            if (specification.Skip == 0)
+            {
+               currentQuery = currentQuery.Take(specification.Take);
+            }
+            else
+            {
+               currentQuery = currentQuery.Skip(specification.Skip).Take(specification.Take);
+            }
+         }
+
          currentQuery = specification.Includes.Aggregate(currentQuery, (current, include) => current.Include(include));
 
          return currentQuery;

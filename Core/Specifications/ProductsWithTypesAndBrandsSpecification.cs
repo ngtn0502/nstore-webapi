@@ -9,7 +9,12 @@ namespace Core.Specifications
 {
    public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
    {
-      public ProductsWithTypesAndBrandsSpecification(string sort) : base()
+      public ProductsWithTypesAndBrandsSpecification(string sort, int? brandId = null, int? typeId = null, int pageSize = 6, int pageNumber = 1)
+         : base(x =>
+         (
+            (!(brandId != null) || (x.ProductBrandId == brandId)) &&
+            (!(typeId != null) || (x.ProductTypeId == typeId))
+         ))
       {
          base.AddInclude(p => p.ProductBrand);
          base.AddInclude(p => p.ProductType);
@@ -31,7 +36,8 @@ namespace Core.Specifications
                   break;
             }
          }
-
+         pageSize = pageSize > 50 ? 6 : pageSize;
+         base.ApplyPaging((pageSize * (pageNumber - 1)), pageSize);
       }
 
       public ProductsWithTypesAndBrandsSpecification(int id) : base(p => p.Id == id)
