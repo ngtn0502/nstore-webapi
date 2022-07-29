@@ -45,6 +45,13 @@ namespace API
          services.AddDbContext<StoreContext>(x => x.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
          // Extensions add/register Repository and Config ApiBehaviorOptions
          services.AddApplicationServices();
+         services.AddCors(opt =>
+         {
+            opt.AddPolicy("CorsPolicy", policy =>
+            {
+               policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+            });
+         });
       }
 
       // * Middleware
@@ -68,6 +75,8 @@ namespace API
          // Decide what controller endpoint should be hitted
          app.UseRouting();
          app.UseStaticFiles();
+
+         app.UseCors("CorsPolicy");
 
          // Decide what resources user can be accessed, what permission of user
          app.UseAuthorization();

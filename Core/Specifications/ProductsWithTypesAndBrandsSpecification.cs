@@ -4,25 +4,27 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Params;
 
 namespace Core.Specifications
 {
    public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
    {
-      public ProductsWithTypesAndBrandsSpecification(string sort, int? brandId = null, int? typeId = null, int pageSize = 6, int pageNumber = 1)
+      public ProductsWithTypesAndBrandsSpecification(ProductParams productParams)
          : base(x =>
          (
-            (!(brandId != null) || (x.ProductBrandId == brandId)) &&
-            (!(typeId != null) || (x.ProductTypeId == typeId))
+            (!(productParams.BrandId != null) || (x.ProductBrandId == productParams.BrandId)) &&
+            (!(productParams.TypeId != null) || (x.ProductTypeId == productParams.TypeId)) &&
+            ((string.IsNullOrEmpty(productParams.Search)) || (x.Name.ToLower().Contains(productParams.Search)))
          ))
       {
          base.AddInclude(p => p.ProductBrand);
          base.AddInclude(p => p.ProductType);
          base.AddOrderBy(p => p.Name);
 
-         if (!String.IsNullOrEmpty(sort))
+         if (!String.IsNullOrEmpty(productParams.Sort))
          {
-            switch (sort)
+            switch (productParams.Sort)
             {
                case "priceAsc":
                   base.AddOrderBy(p => p.Price);
@@ -36,8 +38,7 @@ namespace Core.Specifications
                   break;
             }
          }
-         pageSize = pageSize > 50 ? 6 : pageSize;
-         base.ApplyPaging((pageSize * (pageNumber - 1)), pageSize);
+         base.ApplyPaging((productParams.PageSize * (productParams.PageNumber - 1)), productParams.PageSize);
       }
 
       public ProductsWithTypesAndBrandsSpecification(int id) : base(p => p.Id == id)
