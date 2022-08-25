@@ -10,6 +10,13 @@ namespace Infrastructure.Data
       {
          try
          {
+            if (!context.ProductSizes.Any())
+            {
+               var productSizes = await File.ReadAllTextAsync("../Infrastructure/Data/SeedsData/sizes.json");
+               var sizes = JsonSerializer.Deserialize<List<ProductSize>>(productSizes);
+               await context.ProductSizes.AddRangeAsync(sizes);
+               await context.SaveChangesAsync();
+            }
             if (!context.ProductBrands.Any())
             {
                var productBrands = await File.ReadAllTextAsync("../Infrastructure/Data/SeedsData/brands.json");
