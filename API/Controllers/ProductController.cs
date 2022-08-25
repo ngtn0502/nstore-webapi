@@ -15,11 +15,12 @@ namespace API.Controllers
       private readonly IGenericRepository<Product> _productRepos;
       private readonly IGenericRepository<ProductType> _productTypeRepos;
       private readonly IGenericRepository<ProductBrand> _productBrandRepos;
+      private readonly IGenericRepository<ProductSize> _productSizeRepos;
       private readonly IMapper _mapper;
       public ProductsController(IGenericRepository<Product> productRepos, IGenericRepository<ProductType> productTypeRepos,
-      IGenericRepository<ProductBrand> productBrandRepos, IMapper mapper)
+      IGenericRepository<ProductBrand> productBrandRepos, IGenericRepository<ProductSize> productSizeRepos, IMapper mapper)
       {
-         _mapper = mapper;
+         _productSizeRepos = productSizeRepos;
          _productBrandRepos = productBrandRepos;
          _productTypeRepos = productTypeRepos;
          _productRepos = productRepos;
@@ -65,6 +66,12 @@ namespace API.Controllers
       public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
       {
          return Ok(await _productTypeRepos.ListAllAsync());
+      }
+
+      [HttpGet("sizes")]
+      public async Task<ActionResult<IReadOnlyList<ProductSize>>> GetProductSizes()
+      {
+         return Ok(await _productSizeRepos.ListAllAsync());
       }
    }
 }
