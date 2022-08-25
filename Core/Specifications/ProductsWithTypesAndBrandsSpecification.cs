@@ -20,6 +20,7 @@ namespace Core.Specifications
       {
          base.AddInclude(p => p.ProductBrand);
          base.AddInclude(p => p.ProductType);
+         base.AddInclude(p => p.ProductSize);
          base.AddOrderBy(p => p.Name);
 
          if (!String.IsNullOrEmpty(productParams.Sort))
@@ -45,6 +46,7 @@ namespace Core.Specifications
       {
          base.AddInclude(p => p.ProductBrand);
          base.AddInclude(p => p.ProductType);
+         base.AddInclude(p => p.ProductSize);
       }
    }
 }
